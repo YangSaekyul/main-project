@@ -94,9 +94,14 @@ const MyPage = () => {
             },
           });
 
+          const filteredData = response.data.orders.filter(
+            (item) => item.order_status !== '생성',
+          );
+
           const total_elements = response.data.pageInfo.total_elements;
           if (tab === '리뷰 관리') setReviewCount(total_elements);
-          if (tab === '주문 내역') setOrderCount(total_elements);
+          if (tab === '주문 내역')
+            setOrderCount(total_elements - filteredData.length);
           if (tab === '즐겨찾기') setFavoriteCount(total_elements);
         } catch (error) {
           console.error(`[${tab}] 데이터를 가져오는데 실패함: `, error);
