@@ -116,7 +116,7 @@ const MainPage = () => {
             </Title>
           </div>
           {/* 즐겨찾기가 1개면 슬라이더 미사용 */}
-          {favoriteStores.length === 2 ? (
+          {favoriteStores.length <= 2 ? (
             <div className="flex justify-center">
               {favoriteStores.map((store) => (
                 <FavoriteStoreCard store={store} key={store.id} />
