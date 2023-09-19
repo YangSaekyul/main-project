@@ -4,6 +4,7 @@ import { Modal, ModalOverlay } from '../../assets/Modal.jsx';
 import Button from '../../assets/buttons/Button.jsx';
 import { CancelButton } from './EditProfile.jsx';
 import { useAuthStore } from '../../store/store.js';
+import { toast } from 'react-hot-toast';
 
 const ImageUploadModal = ({ onClose, memberImage }) => {
   const inputRef = useRef(null);
@@ -30,8 +31,10 @@ const ImageUploadModal = ({ onClose, memberImage }) => {
         },
       );
 
-      alert('이미지가 성공적으로 업로드되었습니다.');
-      window.location.reload();
+      toast.success('이미지가 업로드 되었습니다.');
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } catch (error) {
       console.error('이미지 업로드 실패:', error);
     }

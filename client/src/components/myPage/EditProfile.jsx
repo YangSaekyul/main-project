@@ -5,6 +5,7 @@ import Button from '../../assets/buttons/Button.jsx';
 import axios from 'axios';
 import { useAuthStore } from '../../store/store.js';
 import { Modal, ModalOverlay } from '../../assets/Modal.jsx';
+import { toast } from 'react-hot-toast';
 
 export const CancelButton = styled(Button)`
   background-color: rgba(255, 255, 255, 0.4);
@@ -31,9 +32,10 @@ const EditProfile = ({ onClose }) => {
       )
       .then((res) => {
         console.log(res);
-        alert('회원정보가 수정되었습니다.');
-        onClose();
-        window.location.reload();
+        toast.success('회원정보가 수정되었습니다.');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
