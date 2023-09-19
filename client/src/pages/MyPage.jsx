@@ -95,7 +95,7 @@ const MyPage = () => {
           });
 
           const filteredData = response.data.orders.filter(
-            (item) => item.order_status !== '생성',
+            (item) => item.order_status === '생성',
           );
 
           const total_elements = response.data.pageInfo.total_elements;
